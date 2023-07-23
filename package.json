@@ -1,0 +1,16 @@
+{
+  "name": "@beerush/esdev",
+  "version": "1.0.0",
+  "description": "ESM and CommonJS builder",
+  "main": "bin/esdev",
+  "license": "MIT",
+  "bin": {
+    "esdev": "./bin/esdev"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "fs-extra": "^11.1.1",
+    "glob": "^10.3.3"
+  },
+  "type": "commonjs"
+}
