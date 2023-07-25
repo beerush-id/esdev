@@ -5,12 +5,30 @@
   "main": "bin/esdev",
   "license": "MIT",
   "bin": {
-    "esdev": "./bin/esdev"
+    "esdev": "bin/esdev"
   },
   "dependencies": {
     "chokidar": "^3.5.3",
     "fs-extra": "^11.1.1",
     "glob": "^10.3.3"
   },
-  "type": "commonjs"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beerush-id/esdev.git"
+  },
+  "keywords": [
+    "esm",
+    "cjs",
+    "hybrid",
+    "module"
+  ],
+  "author": "Nanang Mahdaen El Agung <mahdaen@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/beerush-id/esdev/issues"
+  },
+  "homepage": "https://github.com/beerush-id/esdev#readme"
 }
