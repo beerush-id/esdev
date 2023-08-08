@@ -1,5 +1,5 @@
 const { watch } = require('chokidar');
-const { writeFileSync, removeSync, readFileSync, ensureFileSync, ensureDirSync } = require('fs-extra');
+const { writeFileSync, removeSync, readFileSync, ensureDirSync } = require('fs-extra');
 const { spawn, spawnSync } = require('child_process');
 const { join } = require('path');
 const glob = require('glob');
@@ -50,11 +50,11 @@ if (watchScript) {
     }
   });
 
-  spawn('tsc', ['-w', '-p', './tsconfig.json'], { stdio: 'inherit', shell: true });
-  spawn('tsc', ['-w', '-p', './tsconfig-cjs.json'], { stdio: 'inherit', shell: true });
+  spawn('tsc', [ '-w', '-p ./tsconfig.json' ], { stdio: 'inherit', shell: true });
+  spawn('tsc', [ '-w', '-p ./tsconfig-cjs.json' ], { stdio: 'inherit', shell: true });
 } else {
-  spawnSync('tsc', ['-p', './tsconfig.json'], { stdio: 'inherit', shell: true });
-  spawnSync('tsc', ['-p', './tsconfig-cjs.json'], { stdio: 'inherit', shell: true });
+  spawnSync('tsc', [ '-p ./tsconfig.json' ], { stdio: 'inherit', shell: true });
+  spawnSync('tsc', [ '-p ./tsconfig-cjs.json' ], { stdio: 'inherit', shell: true });
 
   const files = glob.sync(`${cjsOutDir}/**/*.js`);
 
