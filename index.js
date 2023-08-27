@@ -56,23 +56,21 @@ if (watchScript) {
   spawnSync('tsc', [ '-p ./tsconfig.json' ], { stdio: 'inherit', shell: true });
   spawnSync('tsc', [ '-p ./tsconfig-cjs.json' ], { stdio: 'inherit', shell: true });
 
-  const files = glob.sync(`${cjsOutDir}/**/*.js`);
-
+  const files = glob.sync('**/*.js', { cwd: cjsOutDir });
   for (const file of files) {
-    rename(file, 'cjs');
+    rename(join(cjsOutDir, file), 'cjs');
   }
 
-  const esFiles = glob.sync(`${esmOutDir}/**/*.cjs`);
-
+  const esFiles = glob.sync('**/*.cjs', { cwd: esmOutDir });
   for (const file of esFiles) {
-    cleanup(file);
+    cleanup(join(esmOutDir, file));
   }
 }
 
 function rename(file, ext = 'cjs') {
   const content = readFileSync(file, 'utf-8');
-  const path = file.replace('.js', `.${ext}`);
-  const text = content.replace(/\.js/g, `.${ext}`);
+  const path = file.replace('.js', `.${ ext }`);
+  const text = content.replace(/require\("[\w\-_./\\]+"\)/g, (v) => v.replace('.js"', '.cjs"'));
 
   writeFileSync(path, text, 'utf-8');
   removeSync(file);
